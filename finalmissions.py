@@ -1,11 +1,10 @@
 from pybricks.tools import hub_menu
 
-# Make a menu to choose a letter. You can also use numbers.
+# Menu to choose a launch to run
 selected = hub_menu("1", "2", "3", "4", "5", "6", "7")
 
-# Based on the selection, run a program.
+# Based on the selection, run a launch module
 if selected == "1":
-    import m1
+    import launches.launch1  # noqa: F401
 elif selected == "2":
-    import m2
-
+    import launches.launch2  # noqa: F401
