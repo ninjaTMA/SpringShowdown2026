@@ -61,7 +61,6 @@ async def main():
     await wait(250)
     await multitask(drive_base.straight(300), rightarm_motor.run_angle(1000, 300))
     await turnwithgyro(45, 100)
-    await drive_base.straight(10)
     for i in range(3):
         await leftarm_motor.run_angle(1100, 900)
         await leftarm_motor.run_angle(1100, -900)
