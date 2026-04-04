@@ -1,4 +1,3 @@
-#Mission Code for The Silo And Forge
 from pybricks.hubs import PrimeHub
 from pybricks.parameters import Axis
 from pybricks.tools import wait
@@ -14,8 +13,8 @@ rightarm_motor = Motor(Port.F)
 rightdrive_motor = Motor(Port.A, Direction.COUNTERCLOCKWISE)
 use_gyro = True
 
-drive_base = DriveBase(leftdrive_motor, rightdrive_motor, wheel_diameter=62.5, axle_track=100)
-drive_base.settings(straight_speed=900, straight_acceleration=800, turn_rate=100, turn_acceleration=900)
+drive_base = DriveBase(leftdrive_motor, rightdrive_motor, wheel_diameter=62.5, axle_track=95)
+drive_base.settings(straight_speed=600, straight_acceleration=800, turn_rate=100, turn_acceleration=900)
 
 hub.imu.reset_heading(0)
 global global_angle
@@ -44,34 +43,16 @@ async def turnwithgyro(target_angle, turn_speed):
     rightdrive_motor.stop()
 
     
-
-
-
-### EXAMPLE CODE ###
-###drive_base.straight(300)
-###turnwithgyro(90,100)
-###leftarm_motor.run_angle(500, 300)
-###drive_base.straight(150)
-###drive_base.straight(-450)*/
-
 async def main():
-    #go forward and dump boulders
-    await drive_base.straight(460)
-    await rightarm_motor.run_angle(500, -300)
-    await wait(250)
-    await multitask(drive_base.straight(300), rightarm_motor.run_angle(1000, 300))
-    await turnwithgyro(45, 100)
-    for i in range(3):
-        await leftarm_motor.run_angle(1100, 350)
-        await leftarm_motor.run_angle(1100, -350)
-    await turnwithgyro(15, 150)
-    #add speed change
-    #drive_base.settings(straight_speed=1100, straight_acceleration=300, turn_rate=150, turn_acceleration=150)
-    await drive_base.straight(-550)
-    await drive_base.arc(-300, 170)
-    #print(drive_base.settings())
+    await drive_base.straight(815)
+    await turnwithgyro(-90, 150)
+    await drive_base.straight(450)
+    await drive_base.straight(-75)
+    await wait(300)
+    await drive_base.straight(235)
+    await turnwithgyro(-36005, 150)
+    await drive_base.straight(280)
+    await drive_base.straight(-60)
+
 
 run_task(main())
-
-
-
