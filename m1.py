@@ -58,9 +58,9 @@ async def main():
     #move forward and raise arm at the same time
     await multitask(drive_base.straight(395), rightarm_motor.run_angle(500, 300))
     #wait for boulders to fall out
-    wait(1667)
+    wait(4000)
     #collect all boudlers
-    await drive_base.straight(065)
+    await drive_base.straight(65)
     #drive back and wait
     await drive_base.straight(-345)
 
