@@ -15,7 +15,7 @@ rightdrive_motor = Motor(Port.A, Direction.COUNTERCLOCKWISE)
 use_gyro = True
 
 drive_base = DriveBase(leftdrive_motor, rightdrive_motor, wheel_diameter=62.5, axle_track=100)
-drive_base.settings(straight_speed=800, straight_acceleration=800, turn_rate=100, turn_acceleration=900)
+drive_base.settings(straight_speed=1000, straight_acceleration=800, turn_rate=100, turn_acceleration=900)
 
 hub.imu.reset_heading(0)
 global global_angle
@@ -43,26 +43,18 @@ async def turnwithgyro(target_angle, turn_speed):
     leftdrive_motor.stop()
     rightdrive_motor.stop()
 
-    
-
-
-
-### EXAMPLE CODE ###
-###drive_base.straight(300)
-###turnwithgyro(90,100)
-###leftarm_motor.run_angle(500, 300)
-###drive_base.straight(150)
-###drive_base.straight(-450)*/
 
 async def main():
     #move forward and raise arm at the same time
-    await multitask(drive_base.straight(395), rightarm_motor.run_angle(500, 300))
+    await multitask(drive_base.straight(425), rightarm_motor.run_angle(500, 300))
+    await drive_base.straight(-50)
     #wait for boulders to fall out
-    wait(4000)
+    await wait(500)
+    drive_base.settings(straight_speed=800, straight_acceleration=800, turn_rate=100, turn_acceleration=900)
     #collect all boudlers
-    await drive_base.straight(65)
+    await drive_base.straight(100)
     #drive back and wait
-    await drive_base.straight(-345)
+    await drive_base.straight(-385)
 
 run_task(main())
 
