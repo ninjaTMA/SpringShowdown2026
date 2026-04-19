@@ -50,9 +50,9 @@ async def main():
     await drive_base.straight(-50)
     #wait for boulders to fall out
     await wait(500)
-    drive_base.settings(straight_speed=800, straight_acceleration=800, turn_rate=100, turn_acceleration=900)
     #collect all boudlers
     await drive_base.straight(100)
+    drive_base.settings(straight_speed=1000, straight_acceleration=800, turn_rate=100, turn_acceleration=900)
     #drive back and wait
     await drive_base.straight(-385)
 
