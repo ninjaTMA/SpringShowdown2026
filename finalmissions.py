@@ -8,4 +8,8 @@ if selected == "1":
     import m1
 elif selected == "2":
     import m2
+elif selected == "4":
+    import m4
+elif selected == "5":
+    import m5
 
