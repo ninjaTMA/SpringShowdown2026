@@ -7,7 +7,7 @@ from pybricks.parameters import Port, Direction
 from pybricks.robotics import DriveBase
 from pybricks.tools import multitask, run_task
 
-from testmission import drive
+
 
 hub = PrimeHub()
 leftdrive_motor = Motor(Port.E)
@@ -47,9 +47,10 @@ async def turnwithgyro(target_angle, turn_speed):
 
 async def main():
     await drive_base.straight(200)
-    await rightarm_motor.run_angle(400, 200)
-    await drive.base.settings(straight_speed=800, straight_acceleration=800, turn_rate=69420, turn_acceleration=50)
+
+    await drive.base.settings(straight_speed=800, straight_acceleration=800, turn_rate=50, turn_acceleration=50)
     await turnwithgyro(-45, 50)
+    await rightarm_motor.run_angle(400, 200)
     await drive_base.straight(100)
 
 run_task(main())
