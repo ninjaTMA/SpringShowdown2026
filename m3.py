@@ -1,4 +1,4 @@
-#Mission Code for The Silo And Forge
+#Mission code for flag and 
 from pybricks.hubs import PrimeHub
 from pybricks.parameters import Axis
 from pybricks.tools import wait
@@ -15,7 +15,7 @@ rightdrive_motor = Motor(Port.A, Direction.COUNTERCLOCKWISE)
 use_gyro = True
 
 drive_base = DriveBase(leftdrive_motor, rightdrive_motor, wheel_diameter=62.5, axle_track=100)
-drive_base.settings(straight_speed=1000, straight_acceleration=800, turn_rate=100, turn_acceleration=900)
+drive_base.settings(straight_speed=700, straight_acceleration=600, turn_rate=100, turn_acceleration=900)
 
 hub.imu.reset_heading(0)
 global global_angle
@@ -44,13 +44,15 @@ async def turnwithgyro(target_angle, turn_speed):
     rightdrive_motor.stop()
 
 async def main():
-    await drive_base.straight (460)
-    await turnwithgyro (90,100)
-    await drive_base.arc (200, 180)
-    await turnwithgyro (-90,100)
-    await drive_base.straight (100)
-    #await turnwithgyro (55,100)
-    #await drive_base.straight (50)
-    #await leftarm_motor.run_angle (-80,500)
-    #await drive_base.arc(-180, 30)
+    """await drive_base.straight(700)
+    await turnwithgyro(-15, 150)
+    await drive_base.straight(50)
+    await drive_base.arc (150, 70)"""
+    await drive_base.straight(785)
+    await turnwithgyro(10, 100)
+    await drive_base.straight(40)
+    await leftarm_motor.run_angle(1100, -875)
+    await drive_base.straight(-40)
+    await turnwithgyro(180, 150)
+
 run_task(main())
