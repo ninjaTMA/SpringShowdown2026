@@ -53,23 +53,39 @@ async def turnwithgyro(target_angle, turn_speed):
 
 async def main():
     #drive forward to the Replace the Relic mission
-    drive_base.settings(straight_speed=375, straight_acceleration=375, turn_rate=70, turn_acceleration=70)
+    drive_base.settings(straight_speed=300, straight_acceleration=300, turn_rate=70, turn_acceleration=70)
     await drive_base.straight(100)
     await turnwithgyro(55, 100)
-    await drive_base.straight(370)
-    await turnwithgyro(-55, 100)
-    await drive_base.straight(90)
+    await drive_base.straight(360)
+    await turnwithgyro(-55, 50)
+    """await drive_base.straight(90)
+    await rightarm_motor.run_angle(1100, -500)
+    await drive_base.straight(210)
+    drive_base.settings(straight_speed=300, straight_acceleration=300, turn_rate=100, turn_acceleration=100)
+    await turnwithgyro(-5, 100)
+    await drive_base.straight(-70)
+    await turnwithgyro(5, 100)
+    await drive_base.straight(-70)
+    await leftarm_motor.run_angle(1100, 1600)
+    await leftarm_motor.run_angle(1100, -1000)
+    await drive_base.straight(-300)
+    await turnwithgyro(70, 100)
+    await drive_base.straight(-700)"""
+
+
+    await drive_base.straight(85)
     #lower idol onto pedestal
     await rightarm_motor.run_angle(1100, -500)
     await drive_base.straight(60)
     #retrieve LEGOlith
-    await leftarm_motor.run_angle(1600, 1100)
+    await leftarm_motor.run_angle(1100, 1600)
     await leftarm_motor.run_angle(1100, -1000)
     #deliver lantern to pedestal
     await drive_base.straight(150)
+    await turnwithgyro(-5, 50)
+    await drive_base.straight(-60)
     #return to base
     drive_base.settings(straight_speed=800, straight_acceleration=800, turn_rate=100, turn_acceleration=100)
-    await drive_base.straight(-55)
     await turnwithgyro (40, 199)
     await drive_base.straight(-700)
 
