@@ -50,9 +50,11 @@ async def main():
     await drive_base.arc (150, 70)"""
     await drive_base.straight(785)
     await turnwithgyro(10, 100)
-    await drive_base.straight(40)
-    await leftarm_motor.run_angle(1100, -875)
-    await drive_base.straight(-40)
-    await turnwithgyro(180, 150)
+    await drive_base.straight(50)
+    await leftarm_motor.run_angle(1550, -1100)
+    await drive_base.straight(-55)
+    await turnwithgyro(-10, 100)
+    #await drive_base.straight(-20)
+    await multitask(turnwithgyro(180, 80), leftarm_motor.run_angle(1550, 1100))
 
 run_task(main())

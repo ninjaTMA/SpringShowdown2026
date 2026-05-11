@@ -63,14 +63,14 @@ async def main():
     await rightarm_motor.run_angle(1100, -500)
     await drive_base.straight(60)
     #retrieve LEGOlith
-    await leftarm_motor.run_angle(1100, 1400)
+    await leftarm_motor.run_angle(1600, 1100)
     await leftarm_motor.run_angle(1100, -1000)
     #deliver lantern to pedestal
     await drive_base.straight(150)
     #return to base
     drive_base.settings(straight_speed=800, straight_acceleration=800, turn_rate=100, turn_acceleration=100)
-    """await drive_base.straight(-45)
+    await drive_base.straight(-55)
     await turnwithgyro (40, 199)
-    await drive_base.straight(-700)"""
+    await drive_base.straight(-700)
 
 run_task(main())
