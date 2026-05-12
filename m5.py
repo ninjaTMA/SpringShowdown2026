@@ -54,7 +54,7 @@ async def turnwithgyro(target_angle, turn_speed):
 async def main():
     #drive forward to the Replace the Relic mission
     drive_base.settings(straight_speed=300, straight_acceleration=300, turn_rate=70, turn_acceleration=70)
-    await drive_base.straight(100)
+    await drive_base.straight(97.5)
     await turnwithgyro(55, 100)
     await drive_base.straight(360)
     await turnwithgyro(-55, 50)
@@ -76,7 +76,7 @@ async def main():
     await drive_base.straight(85)
     #lower idol onto pedestal
     await rightarm_motor.run_angle(1100, -500)
-    await drive_base.straight(65)
+    await drive_base.straight(75)
     #retrieve LEGOlith
     await leftarm_motor.run_angle(1100, 1600)
     await leftarm_motor.run_angle(1100, -1000)
