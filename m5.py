@@ -83,7 +83,7 @@ async def main():
     #deliver lantern to pedestal
     await drive_base.straight(150)
     await turnwithgyro(-5, 50)
-    await drive_base.straight(-65)
+    await drive_base.straight(-70)
     #return to base
     drive_base.settings(straight_speed=800, straight_acceleration=800, turn_rate=100, turn_acceleration=100)
     await turnwithgyro (40, 199)
