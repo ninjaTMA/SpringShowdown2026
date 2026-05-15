@@ -40,8 +40,9 @@ async def tank_turn(hub, motor_left, motor_right, target_degrees, speed):
     """
     # Get starting heading
     speed = max(25, min(100, speed))  # Ensure speed is within reasonable bounds
-    start_heading = hub.imu.heading()    
-    
+    # Tolerance: 10% of target or 2 degrees, whichever is smaller
+    tolerance = min(2, abs(target_degrees) * 0.1)
+
     # Determine turn direction
     if target_degrees > 0:
         # Clockwise turn: left forward, right backward
@@ -52,31 +53,12 @@ async def tank_turn(hub, motor_left, motor_right, target_degrees, speed):
         motor_left.run(speed)
         motor_right.run(-speed)
 
-    # Track how much we've turned
-    degrees_turned = 0
-    last_heading = start_heading
+    # Record starting heading
+    start_heading = hub.imu.heading()
 
-    # Keep turning until we reach target
-    while True:
-        current_heading = hub.imu.heading()
-        # Calculate chssnge since last reading
-        delta = current_heading - last_heading
-
-        # Fix wraparound if we crossed 0/360 boundary
-        if delta > 180:
-            delta -= 360
-        elif delta < -180:
-            delta += 360
-        
-        # Accumulate the turn
-        degrees_turned += delta
-        last_heading = current_heading
-
-        # Check if we've turned enough
-        if abs(degrees_turned) >= abs(target_degrees) - 2:
-            break
-        
-        await wait(10)  # Small delay to prevent busy-waiting
+    # Wait until we've turned far enough
+    while abs(hub.imu.heading() - start_heading) < abs(target_degrees) - tolerance:
+        await wait(10)
 
     # Stop motors with brake for precision
     motor_left.brake()
@@ -94,7 +76,7 @@ async def main():
     # Back up to brush mission
     await drive_base.straight(-180)
     # Retrieve the brush
-    await leftarm_motor.run_angle(1100, 1300)
+    await leftarm_motor.run_angle(1500, 1300)
     await leftarm_motor.run_angle(1100, -1000)
     # Back up to the pedestal
     await drive_base.straight(-55)
