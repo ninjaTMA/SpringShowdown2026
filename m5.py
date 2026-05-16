@@ -123,27 +123,27 @@ async def tank_turn(hub, motor_left, motor_right, target_degrees, speed):
 
 
 async def main():
-    drive_base.settings(straight_speed=300, straight_acceleration=300, turn_rate=70, turn_acceleration=70)
+    drive_base.settings(straight_speed=350, straight_acceleration=350, turn_rate=70, turn_acceleration=70)
     # Pass jig wall
-    await drive_base.straight(125)
+    await drive_base.straight(115)
     # Curve, hit the relic off the pedestal and face temple gates
     await turn_arc(hub, leftdrive_motor, rightdrive_motor, turning_radius=300, turning_degrees=-90, turning_speed=20)
     # Approach temple gates and drop off lantern
-    await drive_base.straight(100)
+    await drive_base.straight(80)
     # Back up to brush mission
     await drive_base.straight(-180)
     # Retrieve the brush
     await leftarm_motor.run_angle(1500, 1300)
     await leftarm_motor.run_angle(1100, -1000)
     # Back up to the pedestal
-    await drive_base.straight(-50)
+    await drive_base.straight(-45)
     # Drop off the idol
     await rightarm_motor.run_angle(1100, -500)
     # Back up a bit to confirm that the idol is on the pedestal
     await drive_base.straight(-45)
     # Return home without knowing idol off of the pedestal
-    await tank_turn(hub, leftdrive_motor, rightdrive_motor, -120, 900)
-    drive_base.settings(straight_speed=1000, straight_acceleration=1000, turn_rate=70, turn_acceleration=70)
+    drive_base.settings(straight_speed=1000, straight_acceleration=1000, turn_rate=1000, turn_acceleration=1000)
+    await tank_turn(hub, leftdrive_motor, rightdrive_motor, -120, 1000)
     await drive_base.straight(400)
     # await turn_arc(hub, leftdrive_motor, rightdrive_motor, turning_radius=190, turning_degrees=90, turning_speed=20)
     
