@@ -55,7 +55,7 @@ async def main():
     await drive_base.straight(-100)
     await turnwithgyro(-10, 100)
     #await drive_base.straight(-20)
-    await multitask(turnwithgyro(170, 180), leftarm_motor.run_angle(1550, 1100))
+    await turnwithgyro(170, 180)
     await drive_base.straight(-100)
     await turnwithgyro(-40, 100)
     await drive_base.straight(-50)
