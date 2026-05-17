@@ -48,7 +48,10 @@ async def turnwithgyro(target_angle, turn_speed):
 
 async def main():
     await drive_base.straight(350)
-    await turnwithgyro(28, 100)
+    await turnwithgyro(26, 100)
+    drive_base.settings(straight_speed=75, straight_acceleration=800, turn_rate=100, turn_acceleration=900)
+
+
     await drive_base.straight(130)
     await wait(500)
     await drive_base.straight(-250)
