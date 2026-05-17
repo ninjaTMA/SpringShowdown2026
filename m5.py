@@ -129,7 +129,7 @@ async def main():
     # Curve, hit the relic off the pedestal and face temple gates
     await turn_arc(hub, leftdrive_motor, rightdrive_motor, turning_radius=300, turning_degrees=-90, turning_speed=20)
     # Approach temple gates and drop off lantern
-    await drive_base.straight(90)
+    await drive_base.straight(100)
     # Back up to brush mission
     await drive_base.straight(-180)
     # Retrieve the brush
