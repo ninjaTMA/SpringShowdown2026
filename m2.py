@@ -66,9 +66,9 @@ async def main():
         await multitask(drive_base.straight(-30),leftarm_motor.run_angle(1100, -600))
         await drive_base.straight(30)
     await turnwithgyro(15, 150)
-    #add speed change
-    await drive_base.straight(-580)
-    await drive_base.arc(-300, 170)
+    drive_base.settings(straight_speed=1000, straight_acceleration=1000, turn_rate=100, turn_acceleration=900)
+    await drive_base.straight(-600)
+    await drive_base.arc(-280, 170)
     #print(drive_base.settings())
 
 run_task(main())
