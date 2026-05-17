@@ -15,5 +15,5 @@ elif selected == "4":
 elif selected == "5":
     import m5
 elif selected == "6":
-    import m6
+    import m6new
 
