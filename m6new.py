@@ -60,6 +60,6 @@ async def main():
     await turnwithgyro(-55, 100)
     await drive_base.straight(100)
     await turnwithgyro(60, 200)
-    await drive_base.straight(170)
+    await drive_base.straight(150)
     await leftarm_motor.run_angle(500, -250)
 run_task(main())
