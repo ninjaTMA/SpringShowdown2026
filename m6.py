@@ -52,6 +52,7 @@ async def turn_arc(hub, leftdrive_motor, rightdrive_motor, turning_radius, turni
     """
     Executes a precise gyro-controlled arc turn.
     
+<<<<<<< HEAD
     Parameters:
     turning_radius (int): Distance from inner wheel to pivot center (mm).
     turning_degrees (int): Target degrees (Positive = Right/CW, Negative = Left/CCW).
@@ -144,6 +145,20 @@ async def main():
     await turnwithgyro(-40, 50)
     await drive_base.straight(40)
     await turnwithgyro(-10, 50)
+=======
+    await multitask(rightarm_motor.run_angle(300, 300), drive_base.straight(390))
+
+    drive_base.settings(straight_speed=600, straight_acceleration=800, turn_rate=50, turn_acceleration=50)
+    await turnwithgyro(-45, 100)
+   
+    await drive_base.straight(150)
+    wait(1000)
+    await drive_base.straight(-145)
+    await rightarm_motor.run_angle(-400, 200)
+    await turnwithgyro(-12, 140)
+    await drive_base.straight(190)
+    await turnwithgyro(95, 140)
+>>>>>>> 1398b3d04908c6f2acad1436ece3f5670ff2fffe
     await drive_base.straight(10)
     wait(1000)
     # Back up and lift arm
